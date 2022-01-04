@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userID: MyString
+  taskID: MyString
+  title: MyString
+  description: MyString
+  dueDate: MyString
+  state: MyString
+
+two:
+  userID: MyString
+  taskID: MyString
+  title: MyString
+  description: MyString
+  dueDate: MyString
+  state: MyString
