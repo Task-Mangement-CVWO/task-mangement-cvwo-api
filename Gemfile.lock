@@ -142,6 +142,8 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  bundle lock
+        --add-platform x86_64-linux
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
