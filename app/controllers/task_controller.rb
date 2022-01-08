@@ -38,7 +38,7 @@ class TaskController < ApplicationController
         if tags
           new_tags = tags.uniq
           old_tags = TaskTag.where(task_id: @task.id, user_id: @user.id)
-          old_tags = old_tags.map {|val| val['tag_id']} if old_tags
+          old_tags = old_tags.map { |val| val['tag_id'] } if old_tags
           update_tags = compare_tags(new_tags, old_tags)
           to_delete = update_tags[0]
           to_create = update_tags[1]
@@ -151,11 +151,7 @@ class TaskController < ApplicationController
 
   #input ( tag ids [1, 2, 3] )
   def delete_tags(tags, task)
-    TaskTag.where(
-      task_id: task.id,
-      user_id: @user.id,
-      tag_id: tags
-    ).delete_all
+    TaskTag.where(task_id: task.id, user_id: @user.id, tag_id: tags).delete_all
     return
   end
 

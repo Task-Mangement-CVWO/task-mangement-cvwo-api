@@ -12,8 +12,8 @@ class AuthenticationController < ApplicationController
         render json: { message: 'Incorrect Credentials' }, status: 401
         return
       end
-
-      payload = { user_id: user.id }
+      twoWeeks = Time.now.to_i + 604_800 * 2
+      payload = { user_id: user.id, exp: twoWeeks }
       token = JWT.encode(payload, ENV['TOKEN_SECRET'], 'HS256')
       render json: { data: { accessToken: token } }
     rescue ActiveRecord::ActiveRecordError
@@ -36,6 +36,20 @@ class AuthenticationController < ApplicationController
         render json: { message: 'User Already Exists' }, status: 400
         return
       end
+
+      if (params['password'].length < 6)
+        render json: {
+                 message: 'Password should be at least 6 characters'
+               },
+               status: 400
+        return
+      end
+
+      if (params['password'] != params['password_confirmation'])
+        render json: { message: 'Passwords do not match' }, status: 400
+        return
+      end
+      
       created_user =
         User.create!(
           username: params['username'],
