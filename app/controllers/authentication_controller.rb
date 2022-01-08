@@ -12,8 +12,8 @@ class AuthenticationController < ApplicationController
         render json: { message: 'Incorrect Credentials' }, status: 401
         return
       end
-
-      payload = { user_id: user.id }
+      twoWeeks = Time.now.to_i + 604800*2
+      payload = { user_id: user.id, exp: twoWeeks }
       token = JWT.encode(payload, ENV['TOKEN_SECRET'], 'HS256')
       render json: { data: { accessToken: token } }
     rescue ActiveRecord::ActiveRecordError
