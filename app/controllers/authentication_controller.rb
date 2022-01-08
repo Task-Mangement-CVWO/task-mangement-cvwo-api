@@ -49,7 +49,7 @@ class AuthenticationController < ApplicationController
         render json: { message: 'Passwords do not match' }, status: 400
         return
       end
-      
+
       created_user =
         User.create!(
           username: params['username'],
