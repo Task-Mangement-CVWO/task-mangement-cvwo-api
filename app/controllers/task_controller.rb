@@ -4,7 +4,8 @@ class TaskController < ApplicationController
   def getAllTasks
     begin
       instances = Task.where(user_id: @user.id)
-      render json: { data: instances }
+      current_tags = TaskTag.where(user_id: @user.id)
+      render json: { data: instances, tag: current_tags }
       return
     rescue ActiveRecord::RecordNotFound
       render json: { error: 'Record not found' }, status: 400
@@ -23,7 +24,8 @@ class TaskController < ApplicationController
   end
 
   def getOneTaskById
-    render json: { data: @task }
+    current_tags = TaskTag.where(task_id: @task.id, user_id: @user.id)
+    render json: { data: @task, tag: current_tags}
     return
   end
 
@@ -35,6 +37,7 @@ class TaskController < ApplicationController
         updated_entity = @task.update(update_params) if update_params
         to_delete = []
         to_create = []
+        current_tags = TaskTag.where(task_id: @task.id, user_id: @user.id)
         if tags
           new_tags = tags.uniq
           old_tags = TaskTag.where(task_id: @task.id, user_id: @user.id)
@@ -48,10 +51,7 @@ class TaskController < ApplicationController
         render json: {
                  data: {
                    updated_entity: @task,
-                   tags: {
-                     to_create: to_create,
-                     to_delete: to_delete
-                   }
+                   tag: current_tags
                  }
                }
       end
