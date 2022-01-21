@@ -83,7 +83,7 @@ class TaskController < ApplicationController
             state: params['state']
           )
         tag_instances = []
-        if tags
+        if tags && tags.length() > 0
           unique_instances = tags.uniq
           tag_instances = create_tags(unique_instances, new_entity)
         end
