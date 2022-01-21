@@ -13,7 +13,7 @@ class AuthenticationController < ApplicationController
         return
       end
       twoWeeks = Time.now.to_i + 604_800 * 2
-      payload = { user_id: user.id, exp: twoWeeks }
+      payload = { user_id: user.id, username: user.username, exp: twoWeeks }
       token = JWT.encode(payload, ENV['TOKEN_SECRET'], 'HS256')
       render json: { data: { accessToken: token } }
     rescue ActiveRecord::ActiveRecordError
