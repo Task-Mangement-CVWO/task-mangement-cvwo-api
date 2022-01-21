@@ -20,10 +20,10 @@ class AuthenticationController < ApplicationController
       render json: { message: 'Active record error' }, status: 400
       return
     rescue => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end
@@ -65,10 +65,10 @@ class AuthenticationController < ApplicationController
       render json: { message: 'Active record error' }, status: 400
       return
     rescue => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end

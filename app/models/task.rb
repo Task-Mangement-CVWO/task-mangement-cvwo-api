@@ -4,7 +4,6 @@ class Task < ApplicationRecord
 
   validates_presence_of :user_id
   validates_presence_of :title
-  validates_presence_of :description
   validates_presence_of :dueDate
   validates_presence_of :state
   validates :state,

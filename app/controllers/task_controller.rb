@@ -8,16 +8,16 @@ class TaskController < ApplicationController
       render json: { data: instances, tag: current_tags }
       return
     rescue ActiveRecord::RecordNotFound
-      render json: { error: 'Record not found' }, status: 400
+      render json: { message: 'Record not found' }, status: 400
       return
     rescue ActiveRecord::ActiveRecordError => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end
@@ -57,13 +57,13 @@ class TaskController < ApplicationController
       end
       return
     rescue ActiveRecord::ActiveRecordError => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end
@@ -73,11 +73,12 @@ class TaskController < ApplicationController
     begin
       ActiveRecord::Base.transaction do
         tags = params['tags']
+        description = params['description'] || ''
         new_entity =
           Task.create!(
             user_id: @user.id,
             title: params['title'],
-            description: params['description'],
+            description: description,
             dueDate: params['dueDate'],
             state: params['state']
           )
@@ -90,13 +91,13 @@ class TaskController < ApplicationController
       end
       return
     rescue ActiveRecord::ActiveRecordError => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end
@@ -111,13 +112,13 @@ class TaskController < ApplicationController
       render json: { data: @task.id }
       return
     rescue ActiveRecord::ActiveRecordError => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end
@@ -130,10 +131,10 @@ class TaskController < ApplicationController
       @task = Task.find(params[:id])
       return
     rescue ActiveRecord::RecordNotFound
-      render json: { error: 'Record not found' }, status: 400
+      render json: { message: 'Record not found' }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end

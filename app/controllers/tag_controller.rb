@@ -7,16 +7,16 @@ class TagController < ApplicationController
       render json: { data: instances }
       return
     rescue ActiveRecord::RecordNotFound
-      render json: { error: 'Record not found' }, status: 400
+      render json: { message: 'Record not found' }, status: 400
       return
     rescue ActiveRecord::ActiveRecordError => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end
@@ -34,13 +34,13 @@ class TagController < ApplicationController
       render json: { data: { updated_entity: @tag } }
       return
     rescue ActiveRecord::ActiveRecordError => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end
@@ -52,13 +52,13 @@ class TagController < ApplicationController
       render json: { data: { new_entity: new_entity } }
       return
     rescue ActiveRecord::ActiveRecordError => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end
@@ -73,13 +73,13 @@ class TagController < ApplicationController
       render json: { data: @tag.id }
       return
     rescue ActiveRecord::ActiveRecordError => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end
@@ -92,10 +92,10 @@ class TagController < ApplicationController
       @tag = Tag.find(params[:id])
       return
     rescue ActiveRecord::RecordNotFound
-      render json: { error: 'Record not found' }, status: 400
+      render json: { message: 'Record not found' }, status: 400
       return
     rescue Exception => e
-      render json: { error: e }, status: 400
+      render json: { message: e }, status: 400
       return
       raise
     end
