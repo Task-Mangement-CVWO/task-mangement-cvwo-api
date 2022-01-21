@@ -79,7 +79,7 @@ class TaskController < ApplicationController
             title: params['title'],
             description: params['description'],
             dueDate: params['dueDate'],
-            state: 'To Do'
+            state: params['state']
           )
         tag_instances = []
         if tags
