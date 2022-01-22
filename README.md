@@ -13,4 +13,10 @@
 4. Run `gem install rails`
 5. Run `bundle install` in the working directory to install required packages
 6. Copy `.env.example` and create your own enviroment variables
-7. Run `rails s` to run the app on localhost
+7. Setup database
+```
+rake db:create
+rake db:migrate
+rake db:seed
+```
+8. Run `rails s` to run the app on localhost
