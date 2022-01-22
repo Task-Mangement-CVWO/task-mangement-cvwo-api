@@ -1,8 +1,9 @@
 # Task Manager (API)
 
-## Documentation
+## Documentation and Deployment
 
 - [Postman Documentation](https://documenter.getpostman.com/view/11771909/UVXqDsTi)
+- [https://tm-cvwo-api.herokuapp.com/](https://tm-cvwo-api.herokuapp.com/)
 
 ## Getting Started
 
