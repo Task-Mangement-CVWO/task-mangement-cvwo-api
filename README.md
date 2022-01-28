@@ -2,7 +2,7 @@
 
 ## Documentation and Deployment
 
-- [Postman Documentation](https://documenter.getpostman.com/view/11771909/UVXqDsTi)
+- [Postman Documentation](https://documenter.getpostman.com/view/11771909/UVeCPTNA)
 - [https://tm-cvwo-api.herokuapp.com/](https://tm-cvwo-api.herokuapp.com/)
 
 ## Getting Started
