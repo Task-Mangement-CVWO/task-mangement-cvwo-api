@@ -61,9 +61,9 @@ class AuthenticationController < ApplicationController
         return
       end
       render json: { message: 'User Successfully Created' }, status: 201
-    rescue ActiveRecord::ActiveRecordError
-      render json: { message: 'Active record error' }, status: 400
-      return
+    # rescue ActiveRecord::ActiveRecordError
+    #   render json: { message: 'Active record error' }, status: 400
+    #   return
     rescue => e
       render json: { message: e }, status: 400
       return
